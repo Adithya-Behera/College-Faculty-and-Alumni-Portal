@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 // Define the initial state for the auth slice
 const initialState = {
   isAuthenticated: false,
@@ -15,7 +15,7 @@ export const login = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/login",
+        `${apiUrl}/login`,
         credentials
       );
       console.log(response.data);
